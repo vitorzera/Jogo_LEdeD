@@ -19,7 +19,7 @@ int main()
     sf::Sprite bgSprite(bgTexture);
 
     sf::Texture nvTexture;
-    nvTexture.loadFromFile("imagens/naves/n1.png");
+    nvTexture.loadFromFile("imagens/n1.png");
     sf::IntRect nvRect(4, 4, 65, 100);
     sf::Sprite nvSprite(nvTexture);
 
