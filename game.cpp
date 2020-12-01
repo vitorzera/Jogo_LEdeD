@@ -18,12 +18,22 @@ int main()
     sf::IntRect bgRect(0, 0, windowWidth, windowHeight);
     sf::Sprite bgSprite(bgTexture);
 
+    sf::Font font;
+    font.loadFromFile("imagens/octin.ttf");
+
+    sf::Text text;
+    text.setFont(font);
+    text.setCharacterSize(40);
+    text.setFillColor(sf::Color::Red);
+    text.setPosition(10, 10);
+    text.setString("");
+
+    sf::Clock clock;
+
     sf::Texture nvTexture;
     nvTexture.loadFromFile("imagens/n1.png");
     sf::IntRect nvRect(4, 4, 65, 100);
     sf::Sprite nvSprite(nvTexture);
-
-
 
     sf::Texture inv2Texture;
     inv2Texture.loadFromFile("imagens/n2.png");
@@ -51,7 +61,7 @@ int main()
     sf::Sprite anvSprite(anvTexture);
 
     sf::Texture shTexture;
-    shTexture.loadFromFile("imagens/shots.png");
+    shTexture.loadFromFile("imagens/shot.png");
     sf::Sprite shSprite(shTexture);
 
     sf::Texture sh1Texture;
@@ -74,6 +84,7 @@ int main()
 
     float invY = windowHeight-350, nvY = windowHeight-350, shX = windowWidth;
     bool gameOver = false;
+    int steps=5;
 
     // game loop
     while (window.isOpen())
@@ -96,13 +107,19 @@ int main()
         // Atualização do estado do jogo
         if(!gameOver)
         {
+
         bgRect.left++;
         bgSprite.setTextureRect(bgRect);
 
-        nvSprite.setTextureRect(nvRect); // nave do player
-        nvSprite.setPosition(25, nvY);
-
-
+        if(clock.getElapsedTime().asSeconds() >= 0.2)
+        {
+          steps++;
+          text.setString(std::to_string(steps));
+          clock.restart();
+        }
+        
+          nvSprite.setTextureRect(nvRect); // nave do player
+          nvSprite.setPosition(25, nvY);
 
         inv2Sprite.setTextureRect(inv2Rect);
         inv2Sprite.setPosition(950, invY+200);
@@ -128,7 +145,29 @@ int main()
         if(nvSprite.getGlobalBounds().intersects(shSprite.getGlobalBounds()))
           {
           gameOver = true;
+          text.setString("GameOver!");
           }
+          if(nvSprite.getGlobalBounds().intersects(sh1Sprite.getGlobalBounds()))
+            {
+            gameOver = true;
+            text.setString("GameOver!");
+            }
+            if(nvSprite.getGlobalBounds().intersects(sh2Sprite.getGlobalBounds()))
+              {
+              gameOver = true;
+              text.setString("GameOver!");
+              }
+              if(nvSprite.getGlobalBounds().intersects(sh3Sprite.getGlobalBounds()))
+                {
+                gameOver = true;
+                text.setString("GameOver!");
+                }
+                if(nvSprite.getGlobalBounds().intersects(sh4Sprite.getGlobalBounds()))
+                  {
+                  gameOver = true;
+                  text.setString("GameOver!");
+                  }
+
         }
 
 
@@ -150,6 +189,7 @@ int main()
         window.draw(sh2Sprite);
         window.draw(sh3Sprite);
         window.draw(sh4Sprite);
+        window.draw(text);
 
         window.display();
 
