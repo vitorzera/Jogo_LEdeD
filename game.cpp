@@ -4,8 +4,6 @@
 
 int main()
 {
-
-
     const int windowWidth = 1100, windowHeight = 619; //Define a janela do jogo
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Jogo_LEdeD");
@@ -79,8 +77,6 @@ int main()
     sh4Texture.loadFromFile("imagens/shot.png");
     sf::Sprite sh4Sprite(sh4Texture);
 
-
-
     float invY = windowHeight-350, nvY = windowHeight-350, shX = windowWidth;
     bool gameOver = false;
     int steps=0;
@@ -99,8 +95,6 @@ int main()
                 if (event.key.code == sf::Keyboard::Escape) //Fecha o jogo
                     window.close();
              }
-
-
         }
 
         // Atualização do estado do jogo
@@ -169,8 +163,6 @@ int main()
 
         }
 
-
-
         // Desenha o frame
         window.clear(sf::Color::White);
         window.draw(bgSprite);
@@ -191,8 +183,6 @@ int main()
         window.draw(text);
 
         window.display();
-
-
 
     }
 
