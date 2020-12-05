@@ -117,8 +117,8 @@ int main()
           clock.restart();
         }
 
-          nvSprite.setTextureRect(nvRect); // nave do player
-          nvSprite.setPosition(25, nvY);
+        nvSprite.setTextureRect(nvRect); // nave do player
+        nvSprite.setPosition(25, nvY);
 
         inv2Sprite.setTextureRect(inv2Rect);
         inv2Sprite.setPosition(950, invY+200);
